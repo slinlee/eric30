@@ -28,6 +28,7 @@ if (Meteor.isClient) {
     'click button.inc': function () {
 
       Players.update(Session.get("selected_player"), {$inc: {score: 1}});
+      bounceface();
     }
   });
 
@@ -41,7 +42,7 @@ if (Meteor.isClient) {
     'submit form' : function (e) {
       e.preventDefault();
       if ($('#newchallenge').val() !== '') {
-        Players.insert({name: $('#newchallenge').val(), score: 0});
+        Players.insert({name: $('#newchallenge').val(), score: 0, requiredPts: 10});
       }
     }
   })
@@ -50,7 +51,7 @@ if (Meteor.isClient) {
 // On server startup, create some players if the database is empty.
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    // Players.remove({});//debug
+    //Players.remove({});//debug
     if (Players.find().count() === 0) {
       var names = ["Give Zona a Kiss!",
                    "Take a shot!",
@@ -61,4 +62,14 @@ if (Meteor.isServer) {
         Players.insert({name: names[i], score: 0, requiredPts: 10});
     }
   });
+}
+
+var bounceface = function () {
+  $('#ericface').removeClass('animated tada').addClass('animated tada 2x');
+  var wait = window.setTimeout( function() {
+        $('#ericface').removeClass('animated tada 2x');
+        },
+        2300
+    );
+
 }

@@ -4,14 +4,14 @@
 
 <body>
   <div class="container">
-    <h1><i class="icon-beer icon-large"></i> Happy Birthday, Eric!</h1>
-    <div class="alert alert-info"><strong><i class="icon-check-alt"></i> Vote at: http://eric30.meteor.com</strong></div>
+    <h1><img src="ericface.jpg" id="ericface" class="animated tada"></img> Happy Birthday, Eric! </h1>
+    <div class="alert alert-info"><strong><i class="icon-check-alt"></i> Vote to challenge Mr. Pan to do stuff at: http://eric30.meteor.com</strong></div>
     {{> leaderboard}}
   </div>
 </body>
 
 <template name="leaderboard">
-  <div class="alert alert-warning alert-block">
+  <div class="alert alert-warning alert-block " data-spy="affix" id="details">
     {{#if selected_name}}
 
     <div class="details">
