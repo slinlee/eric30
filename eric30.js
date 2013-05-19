@@ -28,20 +28,26 @@ if (Meteor.isClient) {
       Session.set("selected_player", this._id);
     }
   });
+
+  Template.addChallenge.events ({
+    'submit form' : function (e) {
+      e.preventDefault();
+      Players.insert({name: $('#newchallenge').val(), score: 0});
+    }
+  })
 }
 
 // On server startup, create some players if the database is empty.
 if (Meteor.isServer) {
   Meteor.startup(function () {
     if (Players.find().count() === 0) {
-      var names = ["Ada Lovelace",
-                   "Grace Hopper",
-                   "Marie Curie",
-                   "Carl Friedrich Gauss",
-                   "Nikola Tesla",
-                   "Claude Shannon"];
+      var names = ["Give Zona a Kiss!",
+                   "Take a shot!",
+                   "Sing a Song",
+                   "Give Zona a sloppy kiss!",
+                   "Get on the indoboard!"];
       for (var i = 0; i < names.length; i++)
-        Players.insert({name: names[i], score: Math.floor(Random.fraction()*10)*5});
+        Players.insert({name: names[i], score: 0});
     }
   });
 }
