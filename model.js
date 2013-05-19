@@ -9,3 +9,7 @@ Counter.allow ({
         return false;
     }
 });
+
+
+Challenges = new Meteor.Collection("challenges");
+

@@ -6,43 +6,41 @@
     <div class="container">
         {{> header}}
 
-        <div class="row">
-            <div class="span6">
-            {{> bell}}
-            {{> counter}}
-            </div>
-        <div class="span6">
-            {{> bell}}
-            {{> counter}}
-        </div>
-        </div>
-        <div class="row">
-        <div class="span6">
-            {{> bell}}
-            {{> counter}}
-        </div><div class="span6">
-            {{> bell}}
-            {{> counter}}
-        </div>
+        {{> votesboard}}
 
-        </div>
         {{> footer}}
     </div>
 </body>
 
 <template name="header">
 <div>
-    <div class="pull-right">{{loginButtons align="right"}}</div>
-    <h1 class="hide">BellLee</h1>
+    <h1>Happy Birthday, Eric!</h1>
+
 </div>
 
 </template>
 
+
+<template name="votesboard">
+    <div class="votesboard row">
+        {{#each challenges}}
+            {{> challenge}}
+        {{/each}}
+    </div>
+</template>
+
+<template name="challenge">
+    <div class="challenge span4">
+        {{> bell}}
+        {{> counter}}
+
+    </div>
+
+</template>
+
 <template name="bell">
-<div class="bell" id="bell">
-    <audio id="bellaudio" controls="controls" class="hide">
-        <source src="bell.mp3"/>
-    </audio>
+<div class="bell" id="bell-{{challengeId}}">
+
 
     <div class="span2 animated swing">
         <i class="icon-bell"></i>
@@ -55,7 +53,7 @@
 
 <template name="counter">
 <div class="span3 text-center">
-    <div class="dateRange">Today</div>
+    <div class="dateRange">{{challengename}}</div>
     <div class="counter">{{liveCount}}</div>
 </div>
 
@@ -76,5 +74,8 @@
     </ul>
     {{/unless}}
     <p>Another project by <a href="http://twitter.com/slinlee" target="_blank"><i class="icon-wrench"></i> Slin Lee</a>.</p>
+      <audio id="bellaudio" controls="controls" class="hide">
+        <source src="bell.mp3"/>
+    </audio>
 </footer>
 </template>
