@@ -1,0 +1,80 @@
+<head>
+  <title>Happy Birthday Eric!</title>
+</head>
+
+<body>
+    <div class="container">
+        {{> header}}
+
+        <div class="row">
+            <div class="span6">
+            {{> bell}}
+            {{> counter}}
+            </div>
+        <div class="span6">
+            {{> bell}}
+            {{> counter}}
+        </div>
+        </div>
+        <div class="row">
+        <div class="span6">
+            {{> bell}}
+            {{> counter}}
+        </div><div class="span6">
+            {{> bell}}
+            {{> counter}}
+        </div>
+
+        </div>
+        {{> footer}}
+    </div>
+</body>
+
+<template name="header">
+<div>
+    <div class="pull-right">{{loginButtons align="right"}}</div>
+    <h1 class="hide">BellLee</h1>
+</div>
+
+</template>
+
+<template name="bell">
+<div class="bell" id="bell">
+    <audio id="bellaudio" controls="controls" class="hide">
+        <source src="bell.mp3"/>
+    </audio>
+
+    <div class="span2 animated swing">
+        <i class="icon-bell"></i>
+    </div>
+
+
+</div>
+</template>
+
+
+<template name="counter">
+<div class="span3 text-center">
+    <div class="dateRange">Today</div>
+    <div class="counter">{{liveCount}}</div>
+</div>
+
+</template>
+
+
+<template name="footer" class="clear-fix">
+<footer>
+    <p>
+        <button class="btn btn-large" id="clickme" value="More Cowbell">More cowbell</button>
+        <input type="text" placeholder="Log in to get your URL" value='{{personalURL}}'></input>
+        <h3 class="hide animated bounceInUp" id="bellmsg">Ding Ding!</h3>
+    </p>
+    <h2>It's 2013 - Stuff should ring</h2>
+    {{#unless currentUser}}<p>This was a practice project to recreate the functionality of <a href="http://www.bellbot.com" target="_blank">Bellbot</a>.</p>
+    <ul>
+    <li>Make eric do something cool!</li>
+    </ul>
+    {{/unless}}
+    <p>Another project by <a href="http://twitter.com/slinlee" target="_blank"><i class="icon-wrench"></i> Slin Lee</a>.</p>
+</footer>
+</template>
