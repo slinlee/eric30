@@ -5,6 +5,7 @@
 <body>
   <div class="container">
     <h1><i class="icon-beer icon-large"></i> Happy Birthday, Eric!</h1>
+    <h2>Vote at: http://eric30.meteor.com</h2>
     {{> leaderboard}}
 
   </div>
@@ -33,17 +34,19 @@
 </template>
 
 <template name="player">
-  <div class="player {{selected}} {{achieved}}">
-    <span class="name">{{name}}</span>
-    <span class="score">{{score}}/{{requiredPts}}</span>
+  <div class="player {{selected}} {{achieved}} row">
+    <span class="name span6">{{name}}</span>
+    <span class="span4"><span class="score">{{score}}</span><span class="score">/{{requiredPts}}</span></span>
   </div>
 </template>
 
 
 <template name="addChallenge">
+  <div class="row">
   <form class="form-horizontal">
-    <input type="text" class="input-xlarge" id="newchallenge"></input>
+    <input type="text" class="span6" id="newchallenge"></input>
     <button type="submit" id="newchallengebtn" class="btn btn-large btn-primary" value="Propose a new challenge!">Propose a new challenge!</button>
   </form>
+</div>
 
 </template>

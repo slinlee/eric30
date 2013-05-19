@@ -20,12 +20,13 @@ if (Meteor.isClient) {
   Template.player.achieved = function () {
     if (this.score >= this.requiredPts) {
 
-      return "animated wiggle";
+      return "animated tada";
     }
   }
 
   Template.leaderboard.events({
     'click input.inc': function () {
+      if ()
       Players.update(Session.get("selected_player"), {$inc: {score: 1}});
     }
   });
@@ -39,7 +40,9 @@ if (Meteor.isClient) {
   Template.addChallenge.events ({
     'submit form' : function (e) {
       e.preventDefault();
-      Players.insert({name: $('#newchallenge').val(), score: 0});
+      if ($('#newchallenge').val() !== '') {
+        Players.insert({name: $('#newchallenge').val(), score: 0});
+      }
     }
   })
 }
