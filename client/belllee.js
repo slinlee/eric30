@@ -1,9 +1,18 @@
 Meteor.subscribe("counters");
+
+Challenges = new Meteor.Collection("challenges");
+
+
+
+
+
 var count;
 var handle;
 if (Meteor.isClient) {
     $(document).ready(function() {
         count = Counter.find({user: Meteor.userId()});
+
+        challenges = Challenges.find();
 
         handle = count.observeChanges({
             added: function (id, user) {

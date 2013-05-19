@@ -22,7 +22,7 @@
 
 
 <template name="votesboard">
-    <div class="votesboard row">
+    <div class="votesboard row" style="border: solid 1px red">
         {{#each challenges}}
             {{> challenge}}
         {{/each}}
@@ -30,9 +30,9 @@
 </template>
 
 <template name="challenge">
-    <div class="challenge span4">
-        {{> bell}}
-        {{> counter}}
+    <div class="challenge span4" style="border: solid 1px blue">
+        <p> test</p>
+
 
     </div>
 
@@ -40,40 +40,30 @@
 
 <template name="bell">
 <div class="bell" id="bell-{{challengeId}}">
-
-
     <div class="span2 animated swing">
         <i class="icon-bell"></i>
     </div>
-
-
 </div>
 </template>
 
 
 <template name="counter">
-<div class="span3 text-center">
-    <div class="dateRange">{{challengename}}</div>
-    <div class="counter">{{liveCount}}</div>
-</div>
-
+    <div class="span3 text-center">
+        <div class="dateRange">{{challengename}}</div>
+        <div class="counter">{{liveCount}}</div>
+    </div>
 </template>
 
 
 <template name="footer" class="clear-fix">
 <footer>
     <p>
-        <button class="btn btn-large" id="clickme" value="More Cowbell">More cowbell</button>
-        <input type="text" placeholder="Log in to get your URL" value='{{personalURL}}'></input>
+
         <h3 class="hide animated bounceInUp" id="bellmsg">Ding Ding!</h3>
     </p>
-    <h2>It's 2013 - Stuff should ring</h2>
-    {{#unless currentUser}}<p>This was a practice project to recreate the functionality of <a href="http://www.bellbot.com" target="_blank">Bellbot</a>.</p>
-    <ul>
-    <li>Make eric do something cool!</li>
-    </ul>
-    {{/unless}}
-    <p>Another project by <a href="http://twitter.com/slinlee" target="_blank"><i class="icon-wrench"></i> Slin Lee</a>.</p>
+    <h2>Make Eric do something cool!</h2>
+
+
       <audio id="bellaudio" controls="controls" class="hide">
         <source src="bell.mp3"/>
     </audio>

@@ -11,5 +11,4 @@ Counter.allow ({
 });
 
 
-Challenges = new Meteor.Collection("challenges");
 
