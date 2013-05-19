@@ -2,8 +2,24 @@
 // it is backed by a MongoDB collection named "players".
 
 Players = new Meteor.Collection("players");
+var facewatch;
+var facewatchhandle;
 
 if (Meteor.isClient) {
+
+$(document).ready(function() {
+  facewatch = Players.find();
+  facewatchhandle = facewatch.observeChanges({
+      added: function ( id, user ) {
+        bounceface();
+
+      },
+      changed: function (id, user) {
+        bounceface();
+      }
+  });
+});
+
   Template.leaderboard.players = function () {
     return Players.find({}, {sort: {score: -1, name: 1}});
   };
@@ -73,3 +89,5 @@ var bounceface = function () {
     );
 
 }
+
+
