@@ -4,10 +4,9 @@
 
 <body>
   <div class="container">
-    <h1>Happy Birthday, Eric!</h1>
+    <h1><i class="icon-beer icon-large"></i> Happy Birthday, Eric!</h1>
     {{> leaderboard}}
 
-    {{> addChallenge}}
   </div>
 </body>
 
@@ -16,12 +15,15 @@
     {{#each players}}
       {{> player}}
     {{/each}}
+
+    {{> addChallenge}}
   </div>
+
 
   {{#if selected_name}}
   <div class="details">
     <h1>{{selected_name}}</h1>
-    <input type="button" class="btn btn-primary btn-large" value="Vote" />
+    <input type="button" class="btn btn-primary btn-large inc" value="Vote" />
   </div>
   {{/if}}
 
@@ -31,17 +33,17 @@
 </template>
 
 <template name="player">
-  <div class="player {{selected}}">
+  <div class="player {{selected}} {{achieved}}">
     <span class="name">{{name}}</span>
-    <span class="score">{{score}}</span>
+    <span class="score">{{score}}/{{requiredPts}}</span>
   </div>
 </template>
 
+
 <template name="addChallenge">
   <form class="form-horizontal">
-    <input type="text" id="newchallenge"></input>
+    <input type="text" class="input-xlarge" id="newchallenge"></input>
     <button type="submit" id="newchallengebtn" class="btn btn-large btn-primary" value="Propose a new challenge!">Propose a new challenge!</button>
   </form>
 
 </template>
-

@@ -17,9 +17,16 @@ if (Meteor.isClient) {
     return Session.equals("selected_player", this._id) ? "selected" : '';
   };
 
+  Template.player.achieved = function () {
+    if (this.score >= this.requiredPts) {
+
+      return "animated wiggle";
+    }
+  }
+
   Template.leaderboard.events({
     'click input.inc': function () {
-      Players.update(Session.get("selected_player"), {$inc: {score: 5}});
+      Players.update(Session.get("selected_player"), {$inc: {score: 1}});
     }
   });
 
@@ -40,6 +47,7 @@ if (Meteor.isClient) {
 // On server startup, create some players if the database is empty.
 if (Meteor.isServer) {
   Meteor.startup(function () {
+    // Players.remove({});//debug
     if (Players.find().count() === 0) {
       var names = ["Give Zona a Kiss!",
                    "Take a shot!",
@@ -47,7 +55,7 @@ if (Meteor.isServer) {
                    "Give Zona a sloppy kiss!",
                    "Get on the indoboard!"];
       for (var i = 0; i < names.length; i++)
-        Players.insert({name: names[i], score: 0});
+        Players.insert({name: names[i], score: 0, requiredPts: 10});
     }
   });
 }
