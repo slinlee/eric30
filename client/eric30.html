@@ -1,71 +1,36 @@
 <head>
-  <title>Happy Birthday Eric!</title>
+  <title>Leaderboard</title>
 </head>
 
 <body>
-    <div class="container">
-        {{> header}}
-
-        {{> votesboard}}
-
-        {{> footer}}
-    </div>
+  <div id="outer">
+    {{> leaderboard}}
+  </div>
 </body>
 
-<template name="header">
-<div>
-    <h1>Happy Birthday, Eric!</h1>
+<template name="leaderboard">
+  <div class="leaderboard">
+    {{#each players}}
+      {{> player}}
+    {{/each}}
+  </div>
 
-</div>
+  {{#if selected_name}}
+  <div class="details">
+    <div class="name">{{selected_name}}</div>
+    <input type="button" class="inc" value="Give 5 points" />
+  </div>
+  {{/if}}
 
+  {{#unless selected_name}}
+  <div class="none">Click a player to select</div>
+  {{/unless}}
 </template>
 
-
-<template name="votesboard">
-    <div class="votesboard row" style="border: solid 1px red">
-        {{#each challenges}}
-            {{> challenge}}
-        {{/each}}
-    </div>
+<template name="player">
+  <div class="player {{selected}}">
+    <span class="name">{{name}}</span>
+    <span class="score">{{score}}</span>
+  </div>
 </template>
 
-<template name="challenge">
-    <div class="challenge span4" style="border: solid 1px blue">
-        <p> test</p>
-
-
-    </div>
-
-</template>
-
-<template name="bell">
-<div class="bell" id="bell-{{challengeId}}">
-    <div class="span2 animated swing">
-        <i class="icon-bell"></i>
-    </div>
-</div>
-</template>
-
-
-<template name="counter">
-    <div class="span3 text-center">
-        <div class="dateRange">{{challengename}}</div>
-        <div class="counter">{{liveCount}}</div>
-    </div>
-</template>
-
-
-<template name="footer" class="clear-fix">
-<footer>
-    <p>
-
-        <h3 class="hide animated bounceInUp" id="bellmsg">Ding Ding!</h3>
-    </p>
-    <h2>Make Eric do something cool!</h2>
-
-
-      <audio id="bellaudio" controls="controls" class="hide">
-        <source src="bell.mp3"/>
-    </audio>
-</footer>
-</template>
